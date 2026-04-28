@@ -63,8 +63,8 @@ if conteo_gastos > 0:
     promedio_gastos = round(gastos / conteo_gastos, 2)
 else:
     promedio_gastos = 0
-print("Ingresos:", round(ingresos, 2))
-print("Gastos:", round(gastos, 2))
-print("Balance total:", balance)
-print("Promedio de gastos:", promedio_gastos)
+print("Ingresos: $", round(ingresos, 2))
+print("Gastos: $", round(gastos, 2))
+print("Balance total: $", balance)
+print("Promedio de gastos: $", promedio_gastos)
 print("Num de transacciones:", contador)
