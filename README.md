@@ -11,3 +11,6 @@ Sistema básico que procesa transacciones desde CSV.
 
 ## Cómo ejecutar
 python app/main.py
+
+## Información
+datos data/datos.csv
