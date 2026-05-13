@@ -36,4 +36,8 @@ print("Gastos: $", round(gastos, 2))
 print("Balance total: $", balance)
 print("Promedio de gastos: $", promedio_gastos)
 print("Num de transacciones:", contador)
-print("USD -> EUR:", eur)
+if eur:
+    print("USD -> EUR:", eur)
+else:
+    print("no disponible")
+
