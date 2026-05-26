@@ -2,7 +2,7 @@ import requests
 
 def obtener_tipo_cambio():
     try:
-        respuesta = requests.get("https://api.exchangerate-api.com/v4/latest/USD")
+        respuesta = requests.get("https://api.exchangerate-api.com/v4/latest/USD",timeout=3)
         if respuesta.status_code == 200:
             datos = respuesta.json()
             return datos["rates"]["EUR"]
@@ -12,6 +12,5 @@ def obtener_tipo_cambio():
     except requests.exceptions.RequestException as e:
         print("Error conexión:", e)
         return None
-
-        respuesta=requests.get("https://restcountries.com/v3.1/name/ecuador")
-        datos=respuesta.json
+    except requests.exceptions.Timeout:
+        print("La solicitud tardó demasiado")

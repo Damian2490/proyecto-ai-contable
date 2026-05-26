@@ -1,4 +1,6 @@
 __pycache__/
 services/__pycache__/
+routes/__pycache__/
+app/__pycache__/
 *.pyc
 .env

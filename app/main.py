@@ -1,6 +1,7 @@
 import csv
 from services.tipo_cambio import obtener_tipo_cambio
 
+
 ingresos = 0
 gastos = 0
 contador = 0
@@ -36,6 +37,7 @@ print("Gastos: $", round(gastos, 2))
 print("Balance total: $", balance)
 print("Promedio de gastos: $", promedio_gastos)
 print("Num de transacciones:", contador)
+
 if eur:
     print("USD -> EUR:", eur)
 else:
