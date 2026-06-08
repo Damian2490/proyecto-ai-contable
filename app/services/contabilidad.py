@@ -1,4 +1,4 @@
-from app.routes.transacciones import transacciones
+
 
 def calcular_balance():
     ingresos = 0
