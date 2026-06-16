@@ -1,25 +1,19 @@
-
+from app.database import get_connection
 
 def calcular_balance():
-    ingresos = 0
-    gastos = 0
-    for transaccion in transacciones:
-        if "descripcion" not in transaccion:
-            continue                          #error no existe descripcion
-        if not isinstance(transaccion["descripcion"],str):
-            continue                          #error descripcion no es tipo str
-        if transaccion["descripcion"]=="":
-            continue                          #error descripcion esta vacia
-        if "monto" not in transaccion:
-            continue                          #error monto no existe
-        if not isinstance(transaccion["monto"],(int,float)):
-            continue                          #error monto no es tipo numero
-        if transaccion["monto"] > 0:
-            ingresos += transaccion["monto"]
-        else:
-            gastos += transaccion["monto"]
+    conn=get_connection()
+    cursor=conn.cursor()
+    cursor.execute("""SELECT 
+                   COALESCE(SUM(CASE WHEN monto > 0 THEN monto ELSE 0 END), 0) ingresos,
+                   COALESCE(SUM(CASE WHEN monto < 0 THEN monto ELSE 0 END), 0) gastos,
+                   COALESCE(SUM(monto), 0) balance
+                   FROM transacciones;"""
+                   )
+    ingresos,gastos,balance=cursor.fetchone()
+    cursor.close()
+    conn.close()
     return {
         "ingresos": ingresos,
         "gastos": gastos,
-        "balance": ingresos + gastos
+        "balance": balance
     }
